@@ -1,24 +1,57 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Minimal Django File Upload Example</title>
-    </head>
+<html lang="en">
 
-    <body>
-        <!-- List of uploaded documents -->
-        {% if documents %}
-            <ul>
-                {% for document in documents %}
-                    <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No documents.</p>
-        {% endif %}
+<head>
 
-        <!-- Upload form. Note enctype attribute! -->
-        <form action="{% url "list" %}" method="post" enctype="multipart/form-data">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>1 Col Portfolio - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/media/css/1-col-portfolio.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Submission Page</h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+        <!-- Project One -->
+        <div class="row">
+          <div class="control-group">
+              <!-- Button -->
+              <div class="controls">
+                  <button class="btn btn-primary full">Upload Video</button>
+              </div>
+          </div>
+        </div>
+        <hr>
+
+         <form action="{% url "upload" %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <p>{{ form.non_field_errors }}</p>
 
@@ -27,10 +60,30 @@
             <p>
                 {{ form.docfile.errors }}
                 {{ form.docfile }}
+                 <div class="form-group">
+            <label for="usr">Video Title:</label>
+               <input type="text" class="form-control" id="pwd" name="videoname">
+             </div>
             </p>
-
-            <p><input type="submit" value="Upload"/></p>
+ <div class="row">
+            <div class="col-lg-12">
+            <p><input class="btn btn-success btn-lg full" type="submit" value="Upload"/></p>
+              </div>
+        </div>
         </form>
-    </body>
+        <!-- /.row -->
+        <hr>
+
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="/media/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/media/js/bootstrap.min.js"></script>
+
+</body>
 
 </html>
