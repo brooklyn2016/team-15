@@ -47,53 +47,23 @@
             </div>
         </div>
 
-
+         {%if clipurl%}
         <!-- Project One -->
         <div class="row cell">
             <div class="col-xs-4">
+              
                 <a href="#">
-                    <img class="img-responsive center-block" src="http://placehold.it/200x200" alt="">
+                    <img class="img-responsive center-block" src="/media/{{clipurl}}" alt="">
                 </a>
+                
             </div>
             <div class="col-xs-8">
-              <p>Uploaded Content</p>
-              <p>Information 1</p>
-              <p>Information 2</p>
-              <p>Information 3</p>
+              <p>Title: {{videotitle}}</p>
+              <p>Clip Duration: {{videoduration}}</p>
+              <p>Video Queue: {{videoqueue}} </p>
             </div>
         </div>
-        <!-- /.row -->
-
-        <!-- Project One -->
-        <div class="row cell">
-            <div class="col-xs-4">
-                <a href="#">
-                    <img class="img-responsive center-block" src="http://placehold.it/200x200" alt="">
-                </a>
-            </div>
-            <div class="col-xs-8">
-              <p>Uploaded Content</p>
-              <p>Information 1</p>
-              <p>Information 2</p>
-              <p>Information 3</p>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Project One -->
-        <div class="row cell">
-            <div class="col-xs-4">
-                <a href="#">
-                    <img class="img-responsive center-block" src="http://placehold.it/200x200" alt="">
-                </a>
-            </div>
-            <div class="col-xs-8">
-              <p>Uploaded Content</p>
-              <p>Information 1</p>
-              <p>Information 2</p>
-              <p>Information 3</p>
-            </div>
-        </div>
+         {% endif %}
         <!-- /.row -->
 
     </div>
