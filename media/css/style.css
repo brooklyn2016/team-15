@@ -1982,6 +1982,13 @@ footer hr {
     .big-logo { font-size:50px; }
     .jumbotron.jumbotron-register { height:initial; }
     .jumbotron.jumbotron-register h1 { font-size:40px; }
+    img {
+        height: 100%;
+    }
+    #hello {
+        color: black !important;
+        font-weight: 500 !important;
+    }
 }
 
 @media (min-width: 768px) {

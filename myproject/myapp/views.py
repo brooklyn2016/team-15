@@ -11,6 +11,7 @@ from .forms import UserLoginForm
 from moviepy.editor import VideoFileClip
 import datetime
 from myproject.myapp.models import VideoQueue
+from django.core.mail import send_mail
 
 
 
@@ -22,7 +23,9 @@ def upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            newdoc = Document(docfile=request.FILES['docfile'], videoname=request.POST['videoname'])
+            some_var = request.POST.getlist('checks[]')
+            print some_var
+            newdoc = Document(docfile=request.FILES['docfile'], videoname=request.POST['videoname'], channel=some_var[0])
             newdoc.save()
             clip = VideoFileClip('media/'+str(newdoc.docfile))
             clip.save_frame('media/frame'+str(newdoc.id)+'.png', t=2)
@@ -64,10 +67,22 @@ def index(request):
         videoid = request.GET['videoid']
         videoid = VideoQueue.objects.get(pk=videoid)
         fileid = Document.objects.get(pk=videoid.videoID)
-        return render(request, 'index.html', {'videotitle': fileid.videoname, 'videoduration': videoid.clipduration, 'videoqueue': videoid.created_at, 'clipurl': videoid.clipurl})
+        return render(request, 'index.html', {'videotitle': fileid.videoname, 'videoduration': videoid.clipduration, 'videoqueue': videoid.created_at, 'clipurl': videoid.clipurl, 'channel': fileid.channel})
     else: 
         return render(request, 'index.html', {'videotitle': '', 'videoduration': '', 'videoqueue': ''})
 
+def start(request):
+        return render(request, 'start.html', {})
+    
+def sendemail(request):
+    email = request.GET['email']
+    send_mail(
+    '[BRIC] Video Has Been Uploaded',
+    'Your Video Has been uploaded',
+    'mmiah@fordham.edu',
+    ['mmiah@fordham.edu'],
+    fail_silently=False,)
+    return render(request, 'email.html', {})
 def logout_view(request):
     logout(request)
     print(request.user.is_authenticated())

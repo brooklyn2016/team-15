@@ -27,7 +27,11 @@ SECRET_KEY = '-q@x+fbn4vl-+qs!*a=+(u%j1w76z_(7re-1*b+yb&a+rj=-&+'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'naim08'
+EMAIL_HOST_PASSWORD = '150264123ASDasd'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Application definition
 
